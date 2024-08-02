@@ -85,6 +85,16 @@ class bind_func:
         return True, f"Opened game folder: {bind_func.game_directory}"
     
     @staticmethod
+    def open_bepinex_folder():
+        dir = f"{bind_func.game_directory}\\BepInEx"
+        if not dir:
+            return False, "BepInEx directory is not set"
+        if not os.path.exists(dir):
+            return False, f"BepInEx directory does not exist: {dir}"
+        open_folder(dir)
+        return True, f"Opened BepInEx folder: {dir}"
+    
+    @staticmethod
     def open_settings():
         return open_settings()
     
@@ -98,7 +108,7 @@ class bind_func:
         return True
     
     @staticmethod
-    def install_modloader():
+    def install_bepinex():
         success = True
         messages = []
 
@@ -106,10 +116,6 @@ class bind_func:
         bepinex_url = get_latest_bepinex_url()
         if bepinex_url:
             if download_and_extract(bepinex_url, bind_func.game_directory):
-                os.remove(f"{bind_func.game_directory}\\.doorstop_version")
-                os.remove(f"{bind_func.game_directory}\\doorstop_config.ini")
-                os.remove(f"{bind_func.game_directory}\\changelog.txt")
-                os.remove(f"{bind_func.game_directory}\\winhttp.dll")
                 messages.append("BepInEx installed successfully")
             else:
                 success = False
@@ -118,35 +124,16 @@ class bind_func:
             success = False
             messages.append("Failed to get the latest BepInEx download URL")
 
-        # Install MelonLoader
-        melonloader_url = "https://github.com/LavaGang/MelonLoader/releases/latest/download/MelonLoader.x64.zip"
-        if download_and_extract(melonloader_url, bind_func.game_directory):
-            messages.append("MelonLoader installed successfully")
-        else:
-            success = False
-            messages.append("Failed to install MelonLoader")
-
-        return success, "\n".join(messages)
-
     @staticmethod
-    def uninstall_modloader():
-        folders = [
-            f"{bind_func.game_directory}\\BepInEx",
-            f"{bind_func.game_directory}\\MelonLoader",
-            f"{bind_func.game_directory}\\Plugins",
-            f"{bind_func.game_directory}\\Mods",
-            f"{bind_func.game_directory}\\UserData",
-            f"{bind_func.game_directory}\\UserLibs"
-        ]
+    def uninstall_bepinex():
+        shutil.rmtree(f"{bind_func.game_directory}\\BepInEx")
 
         files = [
-            f"{bind_func.game_directory}\\dobby.dll",
-            f"{bind_func.game_directory}\\NOTICE.txt",
-            f"{bind_func.game_directory}\\version.dll"
+            f"{bind_func.game_directory}\\.doorstop_version",
+            f"{bind_func.game_directory}\\changelog.txt",
+            f"{bind_func.game_directory}\\doorstop_config.ini",
+            f"{bind_func.game_directory}\\winhttp.dll"
         ]
-        
-        for folder in folders:
-            shutil.rmtree(folder)
 
         for file in files:
             os.remove(file)

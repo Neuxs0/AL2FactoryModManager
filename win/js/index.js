@@ -18,19 +18,23 @@ function open_game_folder() {
     pywebview.api.open_game_folder().then(() => {}).catch((error) => {})
 }
 
-function install_modloader() {
-    pywebview.api.install_modloader().then((result) => {
+function open_bepinex_folder() {
+    pywebview.api.open_bepinex_folder().then(() => {}).catch((error) => {})
+}
+
+function install_bepinex() {
+    pywebview.api.install_bepinex().then((result) => {
         print(result[1]);
         if (!result[0]) {
-            print("Failed to install one or more modloaders");
+            print("Failed to install bepinex");
         }
     }).catch((error) => {
-        print("Error during modloader installation:", error);
+        print("Error during bepinex installation:", error);
     });
 }
 
-function uninstall_modloader() {
-    pywebview.api.uninstall_modloader().then(() => {}).catch((error) => {})
+function uninstall_bepinex() {
+    pywebview.api.uninstall_bepinex().then(() => {}).catch((error) => {})
 }
 
 get_settings()
