@@ -8,17 +8,52 @@ body {
     overflow: hidden;
 }
 
-.content {
-    width: 100%;
+.side-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--side-menu-width);
     height: 100%;
+    background-color: var(--main-background-color);
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
-#title {
+.side-menu button {
+    display: block;
     width: 100%;
-    text-align: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: var(--secondary-background-color);
+    color: var(--main-text-color);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btns {
+.side-menu button:hover {
+    background-color: var(--main-background-color);
+}
+
+.side-menu button img {
+    width: 24px;
+    height: 24px;
+}
+
+.content {
+    position: absolute;
+    width: calc(100% - var(--side-menu-width));
+    height: 100%;
+    background-color: var(--secondary-background-color);
+    color: var(--main-text-color);
+    font-family: var(--main-text-font-family);
+    margin-left: var(--side-menu-width);
+}
+
+.title {
     width: 100%;
     text-align: center;
 }

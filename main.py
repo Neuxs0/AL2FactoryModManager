@@ -37,7 +37,7 @@ def check_program_files():
                         elif platform.system() == "Darwin":
                             gameDir = "/Applications/Assembly Line 2"
                         else:
-                            gameDir = "/home/user/.steam/steam/steamapps/common/Assembly Line 2"
+                            gameDir = "/home/user/.local/share/Steam/steamapps/common/Assembly Line 2/"
                         json.dump({"theme": "dark", "gameDir": f"{gameDir}"}, f, indent=4)
                 elif "." in os.path.basename(item):
                     with open(item, 'w') as f:

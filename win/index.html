@@ -2,18 +2,42 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/variables.css">
         <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/homeMenu.css">
+        <link rel="stylesheet" href="./css/modsMenu.css">
+        <link rel="stylesheet" href="./css/gameControlsMenu.css">
+        <link rel="stylesheet" href="./css/settingsMenu.css">
     </head>
     <body>
+        <div class="side-menu">
+            <button onclick="navigate('home')"><img src="svg/home.svg" alt="Home"></button>
+            <button onclick="navigate('mods')"><img src="svg/mods.svg" alt="Mods"></button>
+            <button onclick="navigate('game-controls')"><img src="svg/game-controls.svg" alt="Game Controls"></button>
+            <button onclick="navigate('settings')"><img src="svg/settings.svg" alt="Settings"></button>
+        </div>
         <div class="content">
-            <h1 id="title">AL2 Factory Mod Manager</h1>
-            <div class="btns">
-                <button onclick="install_bepinex()">Install BepInEx</button>
-                <button onclick="uninstall_bepinex()">Uninstall BepInEx</button>
-                <button onclick="open_game_folder()">Open Game Folder</button>
-                <button onclick="open_bepinex_folder()">Open BepInEx Folder</button>
+            <!-- Pages -->
+            <div id="home">
+                <h1 class="title">AL2 Factory Mod Manager</h1>
+            </div>
+            <div id="mods">
+                <h1 class="title">Mods</h1>
+            </div>
+            <div id="game-controls">
+                <h1 class="title">Game Controls</h1>
+                <div class="btns">
+                    <button onclick="install_bepinex()">Install BepInEx</button>
+                    <button onclick="uninstall_bepinex()">Uninstall BepInEx</button>
+                    <button onclick="open_game_folder()">Open Game Folder</button>
+                    <button onclick="open_bepinex_folder()">Open BepInEx Folder</button>
+                </div>
+            </div>
+            <div id="settings">
+                <h1 class="title">Settings</h1>
             </div>
         </div>
     </body>
 </html>
 <script src="./js/index.js"></script>
+<script src="./js/pageManager.js"></script>

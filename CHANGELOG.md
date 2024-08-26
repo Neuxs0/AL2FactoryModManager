@@ -1,3 +1,11 @@
+# 1.0.2
+- Added Side Menu
+- Added Home Menu
+- Added Mods Menu
+- Added Game Controls Menu
+- Added Settings Menu
+- Changed background color
+
 # 1.0.1
 - Added a button to open the BepInEx folder
 - Change Centered the buttons in the UI
